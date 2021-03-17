@@ -19,12 +19,11 @@ let id = yargs.argv.id;
 let status = yargs.argv.status;
 let startDate = yargs.argv.startDate;
 let finishDate = yargs.argv.finishDate;
-let userName = os.userInfo().name;
-
+let userName = os.userInfo().username;
 
 
 if (command == 'add') {
-    if (title) {
+    if (title && id && status && startDate && finishDate && userName) {
         return add(title);
  }
 } else if (command == 'update') {
