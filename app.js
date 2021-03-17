@@ -4,6 +4,7 @@ const yargs = require('yargs');
 
 // importing filesystem module to retrieve user dynamically
 const fs = require('fs');
+const os = require('os');
 
 const add = require('./add');
 // const update = require('./update');
