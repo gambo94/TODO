@@ -9,7 +9,7 @@ const os = require('os');
 const list = require('./list');
 const add = require('./add');
 // const update = require('./update');
-// const remove = require('./remove');
+const remove = require('./remove');
 
 
 
@@ -34,7 +34,7 @@ if (command == 'add') {
     }
   }
   else if (command == 'delete') {
-return remove();
+return remove(title);
 
 } else if (command == 'list') {
     let tareas = list.getTareas();
