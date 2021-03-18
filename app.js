@@ -7,7 +7,7 @@ const fs = require('fs');
 const os = require('os');
 
 const list = require('./list');
-//const add = require('./add');
+const add = require('./add');
 // const update = require('./update');
 // const remove = require('./remove');
 
@@ -40,7 +40,7 @@ return remove();
     let tareas = list.getTareas();
 
     for (let tarea of tareas) {
-        if(tarea.status == "pendiente"){
+        if(tarea.status == "PENDING"){
             var colorStatusTarea = "\x1b[31m"; 
 
         }else if (tarea.status == "ejecucion"){
