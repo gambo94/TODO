@@ -23,8 +23,8 @@ let userName = os.userInfo().username;
 
 
 if (command == 'add') {
-    if (title && id && status && startDate && finishDate && userName) {
-        return add(title);
+    if ( title && status && startDate && finishDate && userName) {
+        return add( title, status, startDate, finishDate, userName);
  }
 } else if (command == 'update') {
     if (id && status) {
