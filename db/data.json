@@ -8,9 +8,17 @@
         "userName": "Eric"
     },
     {
+        "title": "Sprint1",
+        "id": 2,
+        "status": "ejecucion",
+        "startDate": "05/03/2021",
+        "finishDate": "18/03/2021",
+        "userName": "Eric"
+    },
+    {
         "title": "Sprint2",
         "id": 2,
-        "status": "terminado",
+        "status": "acabada",
         "startDate": "05/03/2021",
         "finishDate": "18/03/2021",
         "userName": "Eric"

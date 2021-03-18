@@ -37,14 +37,26 @@ return remove();
 
 } else if (command == 'list') {
     let tareas = list.getTareas();
+
     for (let tarea of tareas) {
-        console.log('============ TODO LIST ============');
-        console.log("title: " + tarea.title);
-        console.log("id: " + tarea.id);
-        console.log("status: " + tarea.status);
-        console.log("startDate: " + tarea.startDate);
-        console.log("finishDate: " + tarea.finishDate);
-        console.log("userName: " + tarea.userName);
+        if(tarea.status == "pendiente"){
+            var colorStatusTarea = "\x1b[31m"; 
+
+        }else if (tarea.status == "ejecucion"){
+            var colorStatusTarea = "\x1b[33m";
+            
+        }else if (tarea.status == "acabada"){
+            var colorStatusTarea = "\x1b[32m";
+
+        }
+            console.log(colorStatusTarea);
+            console.log('============ TODO LIST ============');
+            console.log("Title: " + tarea.title);
+            console.log("Id: " + tarea.id);
+            console.log("Status: " + tarea.status);
+            console.log("StartDate: " + tarea.startDate);
+            console.log("FinishDate: " + tarea.finishDate);
+            console.log("UserName: " + userName);
     }
     
     
