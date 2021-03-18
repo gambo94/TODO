@@ -17,15 +17,21 @@ const list = require('./list');
 let command = yargs.argv._[0]
 let title = yargs.argv.title;
 let id = yargs.argv.id;
-let status = yargs.argv.status;
 let startDate = yargs.argv.startDate;
 let finishDate = yargs.argv.finishDate;
 let userName = os.userInfo().username;
 
 
 if (command == 'add') {
-    if (title && id && status && startDate && finishDate && userName) {
-        return add(title);
+<<<<<<< HEAD
+    if ( title && status && startDate && finishDate && userName) {
+        return add( title, status, startDate, finishDate, userName);
+=======
+    if (title && startDate && finishDate && userName) {
+        return add(title, startDate, finishDate, userName);
+ } else {
+     console.log('Please, make sure to fill in all the fields required. Type "help" to find them out');
+>>>>>>> featureAdd/Federico
  }
 } else if (command == 'update') {
     if (id && status) {
