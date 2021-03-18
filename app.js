@@ -23,15 +23,10 @@ let userName = os.userInfo().username;
 
 
 if (command == 'add') {
-<<<<<<< HEAD
-    if ( title && status && startDate && finishDate && userName) {
-        return add( title, status, startDate, finishDate, userName);
-=======
     if (title && startDate && finishDate && userName) {
         return add(title, startDate, finishDate, userName);
  } else {
      console.log('Please, make sure to fill in all the fields required. Type "help" to find them out');
->>>>>>> featureAdd/Federico
  }
 } else if (command == 'update') {
     if (id && status) {
