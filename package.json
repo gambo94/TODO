@@ -10,5 +10,13 @@
   "license": "ISC",
   "dependencies": {
     "yargs": "^16.2.0"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gambo94/TODO.git"
+  },
+  "bugs": {
+    "url": "https://github.com/gambo94/TODO/issues"
+  },
+  "homepage": "https://github.com/gambo94/TODO#readme"
 }
