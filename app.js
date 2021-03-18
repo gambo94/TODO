@@ -43,10 +43,10 @@ return remove();
         if(tarea.status == "PENDING"){
             var colorStatusTarea = "\x1b[31m"; 
 
-        }else if (tarea.status == "ejecucion"){
+        }else if (tarea.status == "IN PROCESS"){
             var colorStatusTarea = "\x1b[33m";
             
-        }else if (tarea.status == "acabada"){
+        }else if (tarea.status == "DONE"){
             var colorStatusTarea = "\x1b[32m";
 
         }
