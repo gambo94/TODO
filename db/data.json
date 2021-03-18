@@ -1,0 +1,18 @@
+[
+    {
+        "title": "Sprint3",
+        "id": 1,
+        "status": "pendiente",
+        "startDate": "18/03/2021",
+        "finishDate": "22/03/2021",
+        "userName": "Eric"
+    },
+    {
+        "title": "Sprint2",
+        "id": 2,
+        "status": "terminado",
+        "startDate": "05/03/2021",
+        "finishDate": "18/03/2021",
+        "userName": "Eric"
+    }
+]

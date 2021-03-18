@@ -6,7 +6,8 @@ const yargs = require('yargs');
 const fs = require('fs');
 const os = require('os');
 
-const add = require('./add');
+const list = require('./list');
+//const add = require('./add');
 // const update = require('./update');
 // const remove = require('./remove');
 
@@ -35,7 +36,18 @@ if (command == 'add') {
 return remove();
 
 } else if (command == 'list') {
-    return list();
+    let tareas = list.getTareas();
+    for (let tarea of tareas) {
+        console.log('============ TODO LIST ============');
+        console.log("title: " + tarea.title);
+        console.log("id: " + tarea.id);
+        console.log("status: " + tarea.status);
+        console.log("startDate: " + tarea.startDate);
+        console.log("finishDate: " + tarea.finishDate);
+        console.log("userName: " + tarea.userName);
+    }
+    
+    
 
 } else {
     console.log("this command doesn't exist")
