@@ -12,6 +12,9 @@ const loadDB = () => {
 const getTareas = () => {
 
     loadDB();
+    if (tareas == null || tareas == ""){
+        console.log(`The task you were looking was not found. Type 'help' to find out how to list the items.`);
+    }
     return tareas;
 }
 
@@ -19,7 +22,7 @@ const getTareaEspecifica = (idTarea) => {
     loadDB();
     tareaEspecifica = tareas.find(tarea => tarea.id === idTarea);
     if (!tareaEspecifica) {
-        console.log("La tarea seleccionada no existe");
+        console.log(`The task you were looking was not found. Type 'help' to find out how to list the items.`);
         return false;
     } else {
         return tareaEspecifica;
