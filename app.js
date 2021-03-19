@@ -20,8 +20,6 @@ let id = yargs.argv.id;
 let startDate = yargs.argv.startDate;
 let finishDate = yargs.argv.finishDate;
 let userName = os.userInfo().username;
-let idTarea = yargs.argv.idTarea;
-
 
 if (command == 'add') {
     if (title && startDate && finishDate && userName) {
@@ -33,19 +31,18 @@ if (command == 'add') {
     if (id && status) {
         return update(id, status);
     }
-  }
-  else if (command == 'delete') {
-return remove(id);
+}
+else if (command == 'delete') {
+    return remove(id);
 
 } else if (command == 'list') {
 
-    let tareas = list.getTareas();
-
-    if (idTarea) {
-        let tareaEspecifica = list.getTareaEspecifica(idTarea);
+    if (id) {
+        let tareaEspecifica = list.getTareaEspecifica(id);
         list.printList(tareaEspecifica)
 
     } else {
+        let tareas = list.getTareas();
         for (let tarea of tareas) {
             list.printList(tarea)
         }

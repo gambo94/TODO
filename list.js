@@ -18,9 +18,9 @@ const getTareas = () => {
     return tareas;
 }
 
-const getTareaEspecifica = (idTarea) => {
+const getTareaEspecifica = (id) => {
     loadDB();
-    tareaEspecifica = tareas.find(tarea => tarea.id === idTarea);
+    tareaEspecifica = tareas.find(tarea => tarea.id === id);
     if (!tareaEspecifica) {
         console.log(`The task you were looking was not found. Type 'help' to find out how to list the items.`);
         return false;
