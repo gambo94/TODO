@@ -10,10 +10,17 @@ const loadDB = () => {
 }
 
 const getTareas = () => {
+    
     loadDB();
     return tareas;
 }
 
+const getTareaEspecifica = (idTarea) => {
+    loadDB();
+    tareaEspecifica = tareas.find(tarea => tarea.id === idTarea);
+    return tareaEspecifica;
+}
+
 module.exports = {
-    getTareas
+    getTareas, getTareaEspecifica
 }

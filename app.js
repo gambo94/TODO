@@ -20,53 +20,60 @@ let id = yargs.argv.id;
 let startDate = yargs.argv.startDate;
 let finishDate = yargs.argv.finishDate;
 let userName = os.userInfo().username;
+let idTarea = yargs.argv.idTarea;
 
 
 if (command == 'add') {
     if (title && startDate && finishDate && userName) {
         return add(title, startDate, finishDate, userName);
- } else {
-     console.log('Please, make sure to fill in all the fields required. Type "help" to find them out');
- }
+    } else {
+        console.log('Please, make sure to fill in all the fields required. Type "help" to find them out');
+    }
 } else if (command == 'update') {
     if (id && status) {
         return update(id, status);
     }
-  }
-  else if (command == 'delete') {
-return remove();
+}
+else if (command == 'delete') {
+    return remove();
 
 } else if (command == 'list') {
+
     let tareas = list.getTareas();
 
-    for (let tarea of tareas) {
-        if(tarea.status == "PENDING"){
-            var colorStatusTarea = "\x1b[31m"; 
+    if (idTarea) {
+        let tareaEspecifica = list.getTareaEspecifica(idTarea);
+        printList(tareaEspecifica)
 
-        }else if (tarea.status == "IN PROCESS"){
-            var colorStatusTarea = "\x1b[33m";
-            
-        }else if (tarea.status == "DONE"){
-            var colorStatusTarea = "\x1b[32m";
-
+    } else {
+        for (let tarea of tareas) {
+            printList(tarea)
         }
-            console.log(colorStatusTarea);
-            console.log('============ TODO LIST ============');
-            console.log("Title: " + tarea.title);
-            console.log("Id: " + tarea.id);
-            console.log("Status: " + tarea.status);
-            console.log("StartDate: " + tarea.startDate);
-            console.log("FinishDate: " + tarea.finishDate);
-            console.log("UserName: " + userName);
     }
-    
-    
 
 } else {
     console.log("this command doesn't exist")
 }
 
+function printList(tarea) {
 
+    if (tarea.status == "PENDING") {
+        var colorStatusTarea = "\x1b[31m";
 
+    } else if (tarea.status == "IN PROCESS") {
+        var colorStatusTarea = "\x1b[33m";
 
+    } else if (tarea.status == "DONE") {
+        var colorStatusTarea = "\x1b[32m";
 
+    }
+
+    console.log(colorStatusTarea);
+    console.log('============ TODO LIST ============');
+    console.log("Title: " + tarea.title);
+    console.log("Id: " + tarea.id);
+    console.log("Status: " + tarea.status);
+    console.log("StartDate: " + tarea.startDate);
+    console.log("FinishDate: " + tarea.finishDate);
+    console.log("UserName: " + userName);
+}
