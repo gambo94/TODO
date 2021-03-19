@@ -9,7 +9,7 @@ const os = require('os');
 const list = require('./list');
 const add = require('./add');
 // const update = require('./update');
-// const remove = require('./remove');
+const remove = require('./remove');
 
 
 
@@ -33,9 +33,9 @@ if (command == 'add') {
     if (id && status) {
         return update(id, status);
     }
-}
-else if (command == 'delete') {
-    return remove();
+  }
+  else if (command == 'delete') {
+return remove(id);
 
 } else if (command == 'list') {
 
