@@ -34,7 +34,7 @@ if (command == 'add') {
     }
   }
   else if (command == 'delete') {
-return remove(title);
+return remove(id);
 
 } else if (command == 'list') {
     let tareas = list.getTareas();
