@@ -48,7 +48,6 @@ else if (command == 'delete') {
     } else {
         for (let tarea of tareas) {
             printList(tarea)
-
         }
     }
 
@@ -81,6 +80,8 @@ function printList(tarea) {
         console.log("StartDate: " + tarea.startDate);
         console.log("FinishDate: " + tarea.finishDate);
         console.log("UserName: " + userName);
+        colorStatusTarea = "\x1b[0m";
+        console.log(colorStatusTarea);
     }
 
 
