@@ -18,7 +18,12 @@ const getTareas = () => {
 const getTareaEspecifica = (idTarea) => {
     loadDB();
     tareaEspecifica = tareas.find(tarea => tarea.id === idTarea);
-    return tareaEspecifica;
+    if (!tareaEspecifica){
+        console.log("La tarea seleccionada no existe");
+        return false;
+    }else{
+        return tareaEspecifica;
+    }
 }
 
 module.exports = {

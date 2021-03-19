@@ -48,6 +48,7 @@ else if (command == 'delete') {
     } else {
         for (let tarea of tareas) {
             printList(tarea)
+
         }
     }
 
@@ -57,23 +58,30 @@ else if (command == 'delete') {
 
 function printList(tarea) {
 
-    if (tarea.status == "PENDING") {
-        var colorStatusTarea = "\x1b[31m";
+    if (tarea == null || tarea == "") {
+        return;
 
-    } else if (tarea.status == "IN PROCESS") {
-        var colorStatusTarea = "\x1b[33m";
+    } else {
+        if (tarea.status == "PENDING") {
+            var colorStatusTarea = "\x1b[31m";
 
-    } else if (tarea.status == "DONE") {
-        var colorStatusTarea = "\x1b[32m";
+        } else if (tarea.status == "IN PROCESS") {
+            var colorStatusTarea = "\x1b[33m";
 
+        } else if (tarea.status == "DONE") {
+            var colorStatusTarea = "\x1b[32m";
+
+        }
+
+        console.log(colorStatusTarea);
+        console.log('============ TODO LIST ============');
+        console.log("Title: " + tarea.title);
+        console.log("Id: " + tarea.id);
+        console.log("Status: " + tarea.status);
+        console.log("StartDate: " + tarea.startDate);
+        console.log("FinishDate: " + tarea.finishDate);
+        console.log("UserName: " + userName);
     }
 
-    console.log(colorStatusTarea);
-    console.log('============ TODO LIST ============');
-    console.log("Title: " + tarea.title);
-    console.log("Id: " + tarea.id);
-    console.log("Status: " + tarea.status);
-    console.log("StartDate: " + tarea.startDate);
-    console.log("FinishDate: " + tarea.finishDate);
-    console.log("UserName: " + userName);
+
 }
