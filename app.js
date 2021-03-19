@@ -8,7 +8,7 @@ const os = require('os');
 
 const list = require('./list');
 const add = require('./add');
-// const update = require('./update');
+const update = require('./update');
 // const remove = require('./remove');
 
 
@@ -20,7 +20,7 @@ let id = yargs.argv.id;
 let startDate = yargs.argv.startDate;
 let finishDate = yargs.argv.finishDate;
 let userName = os.userInfo().username;
-
+let status = yargs.argv.status;
 
 if (command == 'add') {
     if (title && startDate && finishDate && userName) {
@@ -30,8 +30,17 @@ if (command == 'add') {
  }
 } else if (command == 'update') {
     if (id && status) {
-        return update(id, status);
-    }
+        return update(id, status, 'status');
+    } else if (id && title) {
+        return update(id, title, 'title');
+    } else if (id && finishDate) {
+        return update(id, finishDate, 'finishDate');
+    } else if (id && startDate) {
+        return update(id, startDate, 'startDate');
+    } else if (id && userName) {
+        userName = yargs.argv.user;
+        return update(id, userName, 'user');
+    } 
   }
   else if (command == 'delete') {
 return remove();
