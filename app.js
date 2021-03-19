@@ -9,8 +9,8 @@ const os = require('os');
 const list = require('./list');
 const add = require('./add');
 const update = require('./update');
-// const remove = require('./remove');
-
+const remove = require('./remove');
+const callHelp = require('./help');
 
 
 // declaring variables that contains user's input from CLI
@@ -25,12 +25,19 @@ let status = yargs.argv.status;
 if (command == 'add') {
     if (title && startDate && finishDate && userName) {
         return add(title, startDate, finishDate, userName);
- } else {
-     console.log('Please, make sure to fill in all the fields required. Type "help" to find them out');
- }
+    } else {
+        console.log('Please, make sure to fill in all the fields required. Type "help" to find them out');
+    }
 } else if (command == 'update') {
     if (id && status) {
-        return update(id, status, 'status');
+
+        if (status == 'DONE' || status == 'PENDING' || status == 'IN PROCESS') {
+            return update(id, status, 'status');
+        } else {
+            console.log('Please, make sure to enter one of the following options: "DONE", "PENDING", "IN PROCESS". Type "help" to find them out');
+        }
+
+
     } else if (id && title) {
         return update(id, title, 'title');
     } else if (id && finishDate) {
@@ -42,40 +49,28 @@ if (command == 'add') {
         return update(id, userName, 'user');
     } 
   }
-  else if (command == 'delete') {
-return remove();
+
+else if (command == 'delete') {
+    return remove(id);
 
 } else if (command == 'list') {
-    let tareas = list.getTareas();
 
-    for (let tarea of tareas) {
-        if(tarea.status == "PENDING"){
-            var colorStatusTarea = "\x1b[31m"; 
+    if (id) {
+        let tareaEspecifica = list.getTareaEspecifica(id);
+        list.printList(tareaEspecifica)
 
-        }else if (tarea.status == "IN PROCESS"){
-            var colorStatusTarea = "\x1b[33m";
-            
-        }else if (tarea.status == "DONE"){
-            var colorStatusTarea = "\x1b[32m";
-
+    } else {
+        let tareas = list.getTareas();
+        for (let tarea of tareas) {
+            list.printList(tarea)
         }
-            console.log(colorStatusTarea);
-            console.log('============ TODO LIST ============');
-            console.log("Title: " + tarea.title);
-            console.log("Id: " + tarea.id);
-            console.log("Status: " + tarea.status);
-            console.log("StartDate: " + tarea.startDate);
-            console.log("FinishDate: " + tarea.finishDate);
-            console.log("UserName: " + userName);
     }
-    
-    
 
-} else {
+} else if (command == 'getHelp') {
+   return callHelp();
+
+} else
+{
     console.log("this command doesn't exist")
+    return callHelp();
 }
-
-
-
-
-
