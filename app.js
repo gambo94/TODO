@@ -1,5 +1,4 @@
 const yargs = require('yargs');
-//const commands = require('./commands');
 
 
 // importing filesystem module to retrieve user dynamically
@@ -22,32 +21,19 @@ let finishDate = yargs.argv.finishDate;
 let userName = os.userInfo().username;
 let status = yargs.argv.status;
 
+
 if (command == 'add') {
     if (title && startDate && finishDate && userName) {
         return add(title, startDate, finishDate, userName);
     } else {
-        console.log('Please, make sure to fill in all the fields required. Type "help" to find them out');
+        console.log('Please, make sure to fill in all the fields required. Type "getHelp" to find them out');
     }
 } else if (command == 'update') {
-    if (id && status) {
-
-        if (status == 'DONE' || status == 'PENDING' || status == 'IN PROCESS') {
-            return update(id, status, 'status');
-        } else {
-            console.log('Please, make sure to enter one of the following options: "DONE", "PENDING", "IN PROCESS". Type "help" to find them out');
-        }
-
-
-    } else if (id && title) {
-        return update(id, title, 'title');
-    } else if (id && finishDate) {
-        return update(id, finishDate, 'finishDate');
-    } else if (id && startDate) {
-        return update(id, startDate, 'startDate');
-    } else if (id && userName) {
-        userName = yargs.argv.user;
-        return update(id, userName, 'user');
-    } 
+    if (id && status || id && title || id && startDate || id && finishDate || id && userName) {
+        update(id);
+    } else {
+         console.log('Please enter ID and fields of the task you want to modify. Type "getHelp" to find out more.');
+    }  
   }
 
 else if (command == 'delete') {

@@ -35,7 +35,7 @@ const addToList = (title, startDate, finishDate, userName) => {
         jsonDB.push(task);
         console.log('Task successfully created');
     } else {
-        console.log('This task has aleady been inserted. Please, type "help" to check how to use this app')
+        console.log('This task has aleady been inserted. Please, type "getHelp" to check how to use this app')
     }
     fs.writeFileSync("TODOlist.json", JSON.stringify(jsonDB));
 }

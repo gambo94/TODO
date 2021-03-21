@@ -12,7 +12,7 @@ const remove = (id) => {
         fs.writeFileSync("TODOlist.json", JSON.stringify(taskObjs));
         console.log(`Task removed successfully!`);
     } else {
-        console.log(`The task you were looking was not found. Type 'help' to find out how to list the items.`);
+        console.log(`The task you were looking was not found. Type 'getHelp' to find out how to list the items.`);
     }
 }
 
