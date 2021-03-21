@@ -24,6 +24,7 @@ const end = () => {
 
 // used to add a task into the DB
 const  add = (task) => {
+    // defying the query and execute it
     let sql = 'INSERT INTO task SET ?';
     return db.query(sql, task, (err, result) => {
             if(err) throw err;
@@ -33,6 +34,7 @@ const  add = (task) => {
 }
 
 const list = () => {
+    // defying the query and execute it
     let sql = 'SELECT id_task, title, startDate, finishDate, task_status, username FROM task';
     return db.query(sql, (err, result) => {
         if(err) throw err;
@@ -50,6 +52,7 @@ const list = () => {
 }
 
 const listSpecific = (id) => {
+    // defying the query and execute it
     let sql = `SELECT id_task, title, startDate, finishDate, task_status, username FROM task WHERE id_task=${id}`;
     return db.query(sql, (err, result) => {
         if(err) throw err;
@@ -68,4 +71,13 @@ const listSpecific = (id) => {
     })
 }
 
-module.exports = { connect, end, add, list, listSpecific }
+const remove = (id) => {
+    let sql = `DELETE FROM task WHERE id_task=${id}`;
+    return db.query(sql, (err, result) => {
+        if(err) throw err;
+        console.log('Task deleted successfully');
+        end();
+    })
+}
+
+module.exports = { connect, end, add, list, listSpecific, remove }

@@ -8,7 +8,7 @@ const os = require('os');
 const list = require('./listDB');
 const addDB = require('./addDB');
 const update = require('./update');
-const remove = require('./remove');
+const remove = require('./removeDB');
 const callHelp = require('./help');
 
 

@@ -11,5 +11,3 @@ CREATE TABLE task(
     username VARCHAR (50)
 )
 
-INSERT INTO task (title, startDate, finishDate)
-VALUES ('DIOCANE', '2020-12-14', '2020-12-15');
