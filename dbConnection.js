@@ -32,4 +32,40 @@ const  add = (task) => {
         })
 }
 
-module.exports = { connect, end, add }
+const list = () => {
+    let sql = 'SELECT id_task, title, startDate, finishDate, task_status, username FROM task';
+    return db.query(sql, (err, result) => {
+        if(err) throw err;
+        // if there are no results, log a message and end connection
+        if(result.length <= 0){
+            console.log('Your task doesnt exist');
+            end();
+            return;
+        }
+        console.log('Your tasks:');
+        let usersRows = JSON.parse(JSON.stringify(result));
+        console.log(usersRows);
+        end();
+    })
+}
+
+const listSpecific = (id) => {
+    let sql = `SELECT id_task, title, startDate, finishDate, task_status, username FROM task WHERE id_task=${id}`;
+    return db.query(sql, (err, result) => {
+        if(err) throw err;
+
+        // if there are no results, log a message and end connection
+        if(result.length <= 0){
+            console.log('Your task doesnt exist');
+            end();
+            return;
+        }
+        // if there are results, display them and end connection
+        console.log('Your selected task:');
+        let usersRows = JSON.parse(JSON.stringify(result));
+        console.log(usersRows);
+        end();
+    })
+}
+
+module.exports = { connect, end, add, list, listSpecific }

@@ -5,7 +5,7 @@ const yargs = require('yargs');
 const fs = require('fs');
 const os = require('os');
 
-const list = require('./list');
+const list = require('./listDB');
 const addDB = require('./addDB');
 const update = require('./update');
 const remove = require('./remove');
@@ -42,14 +42,9 @@ else if (command == 'delete') {
 } else if (command == 'list') {
 
     if (id) {
-        let tareaEspecifica = list.getTareaEspecifica(id);
-        list.printList(tareaEspecifica)
-
+        list.getTareaEspecifica(id);
     } else {
-        let tareas = list.getTareas();
-        for (let tarea of tareas) {
-            list.printList(tarea)
-        }
+        list.getTareas();
     }
 
 } else if (command == 'getHelp') {
