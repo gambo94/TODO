@@ -6,7 +6,7 @@ const fs = require('fs');
 const os = require('os');
 
 const list = require('./list');
-const add = require('./add');
+const addDB = require('./addDB');
 const update = require('./update');
 const remove = require('./remove');
 const callHelp = require('./help');
@@ -24,7 +24,7 @@ let status = yargs.argv.status;
 
 if (command == 'add') {
     if (title && startDate && finishDate && userName) {
-        return add(title, startDate, finishDate, userName);
+        return addDB(title, startDate, finishDate, userName);
     } else {
         console.log('Please, make sure to fill in all the fields required. Type "getHelp" to find them out');
     }
