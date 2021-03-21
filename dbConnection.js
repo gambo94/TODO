@@ -1,12 +1,15 @@
 const mysql = require('mysql');
 
+/* INSERT YOUR LOCAL DB CONFIG PARAMETERS TO MAKE IT WORK */
+
 const dbConfig = {
-    host: 'localhost',
-    user: 'root',
-    password: 'Sonoetero94',
-    database: 'todo'
+    host: '', // example: 'localhost'
+    user: '',       // example: 'root'
+    password: '',
+    database: ''   // name of the DB, in this case 'todo'
 }
 
+// instance of your db (to connect to it, use db.connect)
 const db = mysql.createConnection(dbConfig);
 
 // use this to connect to the DB from another module
