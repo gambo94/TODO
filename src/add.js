@@ -1,7 +1,7 @@
 const fs = require('fs');
 
 // importing db module in which there's the array that represents JSON file
-let jsonDB = require('./db');
+let jsonDB = require('./config/db');
 
 // count in order to keep track of IDs
 let idCount = 1;

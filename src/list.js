@@ -1,4 +1,4 @@
-let tareas = require('./db');
+let tareas = require('./src/config/db');
 
 const loadDB = () => {
     try {
