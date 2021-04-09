@@ -5,7 +5,7 @@ const redirect = (answers) => {
         service.addTask
     }
     if(answers.coomand === 'Show task(s)'){
-
+        
     }
     if(answers.coomand === 'Edit task'){
         
