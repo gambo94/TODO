@@ -1,8 +1,8 @@
-let tareas = require('./src/config/db');
+let tareas = require('../config/db');
 
 const loadDB = () => {
     try {
-        tareas = require('./TODOlist.json');
+        tareas = require('../config/TODOlist.json');
     } catch (error) {
         tareas = [];
         console.log("ERROR JSON DB")
