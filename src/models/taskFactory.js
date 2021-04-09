@@ -8,16 +8,7 @@ class Task {
     }
     setId(newId) {
         this.id = newId;
-    }    //VALORAR SI PODEMOS APLICAR PROGRAMACIÓN ORIENTADA A OBJETOS (YA QUE LO PIDE JONATAN) ES DECIR, REFACTORIZAR LOS SERVICIOS COMO SI FUERAN MÉTODOS
-    update(){
-        console.log(`Updating task.`)
-    }
-    remove(){
-        console.log(`Removing task.`)
-    }
-    read() {
-        console.log(`Reading task.`)
-    }
+    }    
 }
 
 function taskFactory(title, startDate, finishDate, userName) {

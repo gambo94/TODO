@@ -33,17 +33,18 @@ function createTask(answer){
 
     // CHECKING IF FINISHDATE < STARTDATE = ERROR 
 
-    let indexDate = jsonDB.findIndex((item) => item.finishDate < item.startDate);
-    console.log(`IndexDate:`+ indexDate); //Repasar esto, no funciona
+//    let indexDate = jsonDB.findIndex((item) => item.finishDate < item.startDate);
+//    console.log(`IndexDate:`+ indexDate); //Repasar esto, no funciona
     
     // CHECKING IF ELEMENT EXISTS 
     let index = jsonDB.findIndex((item) => item.title === title);
     console.log('Index: ' + index);
 
-    if (indexDate != -1) { // if finishDate doesn't is < than startDate push it into the array
-        console.log("Error: finishDate is < than startDate");
+//    if (indexDate != -1) { // if finishDate doesn't is < than startDate push it into the array
+//        console.log("Error: finishDate is < than startDate");
         
-    } else if (index === -1) { // if item doesn't exist push it into the array
+//    } else
+     if (index === -1) { // if item doesn't exist push it into the array
         jsonDB.push(task);
         console.log('Task successfully created');
     } else {
