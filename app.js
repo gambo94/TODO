@@ -11,11 +11,11 @@ inquirer.prompt([
             'Add task',
             'Show task(s)',
             'Edit task',
-            'Remove task'
+            'Remove task',
+            'Exit'
         ]
     }
 ]).then(answer => {
-    console.log(answer);
     redirect(answer);
 }).catch((err) => console.log(err));
 
