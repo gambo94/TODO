@@ -1,26 +1,23 @@
-let tareas = require('../config/db');
+const fs = require('fs');
+let database = require('../config/db');
+let jsonDB = database.jsonDB;
 
-const loadDB = () => {
-    try {
-        tareas = require('../config/TODOlist.json');
-    } catch (error) {
-        tareas = [];
-        console.log("ERROR JSON DB")
-    }
-}
 
 const getTareas = () => {
+    // Leemos el JsonDB
+    jsonDB = JSON.parse(fs.readFileSync("TODOlist.json"));
 
-    loadDB();
-    if (tareas == null || tareas == ""){
+    if (jsonDB == null || jsonDB == "") {
         console.log(`The task you were looking was not found. Type 'getHelp' to find out how to list the items.`);
     }
-    return tareas;
+    return jsonDB;
 }
 
 const getTareaEspecifica = (id) => {
-    loadDB();
-    tareaEspecifica = tareas.find(tarea => tarea.id === id);
+    // Leemos el JsonDB
+    jsonDB = JSON.parse(fs.readFileSync("TODOlist.json"));
+    
+    tareaEspecifica = jsonDB.find(tarea => tarea.id === id);
     if (!tareaEspecifica) {
         console.log(`The task you were looking was not found. Type 'getHelp' to find out how to list the items.`);
         return false;

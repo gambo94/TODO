@@ -14,7 +14,7 @@ const addToList = (title, startDate, finishDate, userName) => {
         status: 'PENDING',
         startDate: startDate,
         finishDate: finishDate,
-        user: userName,
+        userName: userName,
     }
     
     // reading to check if file exists. 
