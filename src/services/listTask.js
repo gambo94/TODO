@@ -49,7 +49,7 @@ Id: ${tarea.id}
 Status: ${tarea.status}
 StartDate: ${tarea.startDate}
 FinishDate: ${tarea.finishDate}
-UserName: ${tarea.user}
+UserName: ${tarea.userName}
 ${colorStatusTarea = "\x1b[0m"}`);
     }
 }
