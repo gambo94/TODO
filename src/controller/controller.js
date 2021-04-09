@@ -47,12 +47,14 @@ const redirect = (answers) => {
         ];
 
         inquirer.prompt(questions).then((answers) => {
-            console.log('\nMostrando tarea:');
-            console.log(JSON.stringify(answers, null, '  '));
+            //ver el contenido del objeto
+            //console.log(JSON.stringify(answers, null, '  '));
 
             if (answers.command == "List all task") {
 
+                //Call function getTareas and show task with printList function
                 let tareas = listTask.getTareas();
+                //For loop to show all tasks
                 for (let tarea of tareas) {
                     listTask.printList(tarea)
                 }
@@ -74,8 +76,9 @@ const redirect = (answers) => {
                 inquirer.prompt(questions).then((answers) => {
                     //ver el contenido del objeto
                     //console.log(JSON.stringify(answers, null, '  '));
+                    //Convert number inserted to a Number
                     let idTaskEnter = Number(answers.taskById)
-
+                    //Call function getTareaEspecifica and show task with printList function
                     let tareas = listTask.getTareaEspecifica(idTaskEnter)
                     listTask.printList(tareas)
                 });
