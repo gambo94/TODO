@@ -6,6 +6,7 @@ const promptDelete = require('../services/promptDelete');
 const redirect = (answers) => {
     if(answers.command === 'Add task'){
       promptAdd();      
+    }
     if(answers.command === 'Show task(s)'){
       promptList();
     }
@@ -16,6 +17,6 @@ const redirect = (answers) => {
       promptDelete();
     }
 }
-}
+
 
 module.exports = redirect;

@@ -24,4 +24,4 @@ function promptEdit(){
     });
   
   }
-  
+  module.exports = promptEdit;
