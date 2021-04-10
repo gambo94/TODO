@@ -1,7 +1,6 @@
 const inquirer = require('inquirer');
 const redirect = require('./src/controller/controller')
 
-
 inquirer.prompt([
     {
         type: 'list',
@@ -18,7 +17,6 @@ inquirer.prompt([
 ]).then(answer => {
     redirect(answer);
 }).catch((err) => console.log(err));
-
 
 
 
