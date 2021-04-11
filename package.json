@@ -12,6 +12,7 @@
   "dependencies": {
     "colors": "^1.4.0",
     "inquirer": "^8.0.0",
+    "validate-date": "^2.0.0",
     "yargs": "^16.2.0"
   },
   "repository": {

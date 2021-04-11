@@ -1,37 +1,31 @@
 const createTask = require('../services/createTask');
 const inquirer = require('inquirer');
-
+const dateValidator = require('../helpers/dateValidator');
 
 function promptAdd() {
     var questions = [
       {
-        type: 'confirm',
-        name: 'toBeDelivered',
-        message: 'Do you want to add a task?',
-        default: true,
-      },
-      {
         type: 'input',
         name: 'title',
-        message: 'Task title?',
-        validate: function (value) {
-          return true 
+        message: 'Please insert the title of the task:',
+        validate: function (task) {
+          return true;
         }
       },
       {
         type: 'input',
         name: 'startDate',
         message: 'Start Date?',
-        validate: function (value) {
-          return true 
+        validate: function (date) {
+          return dateValidator.isValid(date);
         }
       },
       {
         type: 'input',
         name: 'finishDate',
         message: 'Finish Date?',
-        validate: function (value) {
-          return true 
+        validate: function (date) {
+          return dateValidator.isOlder(date)
         }
       },
       {
@@ -45,11 +39,10 @@ function promptAdd() {
     ];
     
     inquirer.prompt(questions).then((answers) => {
-      //console.log('\nTarea crada:');
-      //console.log(JSON.stringify(answers, null, '  '));
       createTask.createTask(answers);
-  
+      console.log(JSON.stringify(answers, null, '  '));
     });
   }
+
 
 module.exports = promptAdd;
