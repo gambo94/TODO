@@ -1,4 +1,4 @@
-const removeTask = require('../services/removeTask');
+const removeTask = require('../removeTask');
 const inquirer = require('inquirer');
 
 

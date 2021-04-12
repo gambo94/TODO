@@ -1,8 +1,9 @@
-const editTask = require('../services/editTask');
+const editTask = require('../editTask');
 const inquirer = require('inquirer');
-const listTask = require('../services/listTask');
-const dateValidator = require('../helpers/dateValidator');
-
+const listTask = require('../listTask');
+const dateValidator = require('../../helpers/dateValidator');
+const promptExit = require('../prompts/promptExit');
+const fs = require('fs');
 
 let currentStartDate;
 let currentFinishDate;
@@ -23,6 +24,7 @@ let confirmId = [
       name: 'taskById',
       message: 'Enter the id of the task you want to update',
       validate: function (value) {
+            
           var valid = !isNaN(parseFloat(value));
           return valid || 'Please enter a number';
         }
@@ -103,10 +105,17 @@ function promptEdit(){
 function promptConfirmId() {
   inquirer.prompt(confirmId).then((answers) => {
     idTask = Number(answers.taskById)
+    const taskObjs = JSON.parse(fs.readFileSync("TODOlist.json"));
+    let index = taskObjs.findIndex((item) => item.id === idTask);
+    if (index == -1) {
+      return console.log("The task you were looking for doesn't exist. Please restart the app");
+    } else {
     readTask(idTask);
     //Asking the user for the field to be updated, and then, updating the JSON with the given answer.
     triggerPrompt(updateChoices, triggerUpdate);
+    }    
   }).catch((err) => console.log(err));
+
 }
 
 // Reading task to be updated and grabbing the task' current Start Date and Finish Date to check that both are valid dates.

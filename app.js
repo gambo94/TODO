@@ -1,4 +1,4 @@
-const app = require('./src/services/promptStart');
+const app = require('./src/services/prompts/promptStart');
 
 // Start app
 app();

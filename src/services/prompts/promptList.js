@@ -1,6 +1,5 @@
-const listTask = require('../services/listTask');
+const listTask = require('../listTask');
 const inquirer = require('inquirer');
-
 
 function  promptList() {
 var questions = [

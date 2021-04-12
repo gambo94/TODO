@@ -1,5 +1,5 @@
 const inquirer = require('inquirer');
-const redirect = require('../controller/controller')
+const redirect = require('../../controller/controller')
 
 function startApp(){
 inquirer.prompt([

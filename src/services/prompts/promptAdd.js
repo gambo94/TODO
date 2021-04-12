@@ -1,6 +1,6 @@
-const createTask = require('./createTask');
+const createTask = require('../createTask');
 const inquirer = require('inquirer');
-const dateValidator = require('../helpers/dateValidator');
+const dateValidator = require('../../helpers/dateValidator');
 
 function promptAdd() {
     var questions = [
