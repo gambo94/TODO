@@ -1,11 +1,11 @@
-//CÓDIGO DUPLICADO EN promptEdit.js VER CÓMO EVITARLO.
-
 const editTask = require('../services/editTask');
 const inquirer = require('inquirer');
 const listTask = require('../services/listTask');
 const dateValidator = require('../helpers/dateValidator');
 
-let idTaskEnter;
+let currentStartDate;
+let currentFinishDate;
+let idTask;
 
 let confirmPrompt = [
   {
@@ -71,71 +71,74 @@ let startDate = [
     name: 'startDate',
     message: 'Please enter a new date:',
     validate: function (date) {
-      return dateValidator.isValid(date);
+      return dateValidator.isEarlier(date, currentFinishDate);
     }
   }
 ]
+
 let finishDate = [
   {
     type: 'input',
     name: 'finishDate',
     message: 'Finish Date?',
     validate: function (date) {
-      return dateValidator.isOlder(date)
+      return dateValidator.isOlder(date, currentStartDate)
    }
   }
 ]
 
+// Initial prompt for confirming is the user wants to update an already existing task
 function promptEdit(){
   inquirer.prompt(confirmPrompt).then((answers) => {
     if (answers.command == false) {
       console.log('No tasks have been updated.')
       } else if (answers.command == true) {
         promptConfirmId();
-        //removeTask.removeTask(idTaskEnter);
         }
       }).catch((err) => console.log(err));
 }
 
+// Asking the user for the ID of the task to be updated.
 function promptConfirmId() {
   inquirer.prompt(confirmId).then((answers) => {
-    idTaskEnter = Number(answers.taskById)
-    readTask(idTaskEnter);
-    triggerPrompt(updateChoices, promptUpdate);
+    idTask = Number(answers.taskById)
+    readTask(idTask);
+    //Asking the user for the field to be updated, and then, updating the JSON with the given answer.
+    triggerPrompt(updateChoices, triggerUpdate);
   }).catch((err) => console.log(err));
 }
 
+// Reading task to be updated and grabbing the task' current Start Date and Finish Date to check that both are valid dates.
 function readTask(id){
   let task = listTask.getTareaEspecifica(id)
   listTask.printList(task)
+  currentStartDate = task.startDate;
+  currentFinishDate = task.finishDate;
 }
 
-function promptUpdate(answer) {
+// Updating corresponding field task in the JSON with the provided new values.
+function triggerUpdate(answer) {
   switch(answer.field) {
     case 'Status': 
-      triggerPrompt(statusOptions, (answer) => { editTask(idTaskEnter, 'status', answer.status, readTask) })
+      triggerPrompt(statusOptions, (answer) => { editTask(idTask, 'status', answer.status, readTask) })
       break;
     case 'Title':
-      triggerPrompt(newValue, (answer) => {editTask(idTaskEnter, 'title', answer.newVal, readTask)} )
+      triggerPrompt(newValue, (answer) => {editTask(idTask, 'title', answer.newVal, readTask)} )
       break;
     case 'Username':
-      triggerPrompt(newValue, (answer) => {editTask(idTaskEnter, 'userName', answer.newVal, readTask)} ) 
+      triggerPrompt(newValue, (answer) => {editTask(idTask, 'userName', answer.newVal, readTask)} ) 
       break;
     case 'Start Date':
-      triggerPrompt(startDate, (answer) => {editTask(idTaskEnter, 'startDate', answer.startDate, readTask)} )
-      console.log(answer.startDate); 
+      triggerPrompt(startDate, (answer) => {editTask(idTask, 'startDate', answer.startDate, readTask)} )
       break;
     case 'Finish Date':
-      triggerPrompt(finishDate, (answer) => {editTask(idTaskEnter, 'finishDate', answer.finishDate, readTask)} )
-      console.log(answer.startDate); 
+      triggerPrompt(finishDate, (answer) => {editTask(idTask, 'finishDate', answer.finishDate, readTask)} )
       break;
     default:
       console.log('Something went wrong');       
     }
   }
 
-
-//Esta es una función que se podría reusar en otros apartados, lanza un inquirer.prompt que acepta como parámetros QUESTIONS definidas arriba y una función callback
 
 function triggerPrompt(question, callback){
   inquirer.prompt(question).then(answer => {

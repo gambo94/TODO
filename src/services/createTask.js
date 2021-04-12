@@ -43,4 +43,4 @@ function readTask(id){
     listTask.printList(task)
   }
 //Repensar cómo exportar los servicios, si como métodos o funciones en archivos distintos.
-module.exports = {createTask};
+module.exports = createTask;
