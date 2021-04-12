@@ -31,4 +31,3 @@
 
 ### happy path
 -----------------------
-<img src="./todo.jpg">
