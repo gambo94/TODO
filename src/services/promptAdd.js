@@ -1,4 +1,4 @@
-const createTask = require('../services/createTask');
+const createTask = require('./createTask');
 const inquirer = require('inquirer');
 const dateValidator = require('../helpers/dateValidator');
 

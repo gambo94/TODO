@@ -8,7 +8,7 @@ const getTareas = () => {
     jsonDB = JSON.parse(fs.readFileSync("TODOlist.json"));
 
     if (jsonDB == null || jsonDB == "") {
-        console.log(`The task you were looking was not found. Type 'getHelp' to find out how to list the items.`);
+        console.log(`The task you were looking was not found.`);
     }
     return jsonDB;
 }
@@ -19,7 +19,7 @@ const getTareaEspecifica = (id) => {
     
     tareaEspecifica = jsonDB.find(tarea => tarea.id === id);
     if (!tareaEspecifica) {
-        console.log(`The task you were looking was not found. Type 'getHelp' to find out how to list the items.`);
+        console.log(`The task you were looking was not found.`);
         return false;
     } else {
         return tareaEspecifica;

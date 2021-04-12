@@ -32,7 +32,7 @@ function createTask(answer){
         jsonDB.push(task);
         console.log('Task successfully created');
     } else {
-        console.log('This task has aleady been inserted. Please, type "getHelp" to check how to use this app')
+        console.log('This task has aleady been inserted.')
     }
     fs.writeFileSync("TODOlist.json", JSON.stringify(jsonDB));
     readTask(task.id);

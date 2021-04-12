@@ -8,7 +8,7 @@ class Database {
         return Database.instance
         }
     }
-    // FALTARÍA AÑADIR LOS MÉTODOS QUE MODIFICAN LA BASE DE DATOS.
+    
 }
 
 const database = new Database();

@@ -2,6 +2,7 @@
 
 class Task {
     constructor(title, startDate, finishDate, userName) {
+        this.id = 1;
         this.title = title;
         this.status = 'PENDING';
         this.startDate = startDate;

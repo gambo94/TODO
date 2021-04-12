@@ -27,22 +27,5 @@ let jsonDB = database.jsonDB;
         fs.writeFileSync("TODOlist.json", JSON.stringify(jsonDB));
         readFile(id);
     }
-    /*
-    const editTask = (id) => {
-    
-        for (let key in yargs.argv) {
-            prop = key;
-            val = yargs.argv[prop]
-            if (key == 'user' ||key == 'title' || key == 'startDate' || key == 'finishDate') {
-                applyChange(id, prop, val);
-            } else if (key == 'status') {
-                if (val == 'DONE' || val == 'PENDING' || val == 'IN PROCESS') {
-                    applyChange(id, prop, val);
-                } else {
-                    console.log('Could not modify Status. Make sure to enter one of the following options: "DONE", "PENDING", "IN PROCESS". Type "getHelp" to find them out');
-                }
-            }  
-        } 
-    }*/
 
 module.exports = editTask;

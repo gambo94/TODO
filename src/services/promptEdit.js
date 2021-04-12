@@ -3,6 +3,7 @@ const inquirer = require('inquirer');
 const listTask = require('../services/listTask');
 const dateValidator = require('../helpers/dateValidator');
 
+
 let currentStartDate;
 let currentFinishDate;
 let idTask;

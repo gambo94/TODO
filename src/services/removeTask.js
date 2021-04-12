@@ -14,7 +14,7 @@ function removeTask(id) {
         fs.writeFileSync("TODOlist.json", JSON.stringify(jsonDB));
         console.log(`Task removed successfully!`);
     } else {
-        console.log(`The task you were looking was not found. Type 'getHelp' to find out how to list the items.`);
+        console.log(`The task you were looking was not found.`);
     }
 }
 
