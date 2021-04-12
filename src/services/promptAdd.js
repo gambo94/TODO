@@ -39,9 +39,9 @@ function promptAdd() {
     ];
     
     inquirer.prompt(questions).then((answers) => {
-      createTask.createTask(answers);
-      console.log(JSON.stringify(answers, null, '  '));
+      createTask(answers);
     });
   }
+
 
 module.exports = promptAdd;

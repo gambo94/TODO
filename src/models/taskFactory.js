@@ -1,3 +1,5 @@
+//Factory pattern
+
 class Task {
     constructor(title, startDate, finishDate, userName) {
         this.title = title;
